@@ -1,0 +1,20 @@
+{
+    "profiles": [
+        {
+            "username": "jack",
+            "first_name": "jack",
+            "last_name": "james",
+            "Email": "jack@gmail.com",
+            "password": "1234",
+            "bio": "hufdhuhuiwhfgbuyiwf"
+        },
+        {
+            "username": "andrew",
+            "first_name": "andrew",
+            "last_name": "james",
+            "Email": "andrew@gmail.com",
+            "password": "1234",
+            "bio": "hufdhuhuiwhfgbuyiwf"
+        }
+    ]
+}
