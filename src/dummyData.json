@@ -1,0 +1,47 @@
+{
+  "profiles": [
+    {
+      "username": "jack",
+      "first_name": "jack",
+      "last_name": "james",
+      "Email": "jack@gmail.com",
+      "password": "1234",
+      "bio": "hufdhuhuiwhfgbuyiwf"
+    },
+    {
+      "username": "andrew",
+      "first_name": "andrew",
+      "last_name": "james",
+      "Email": "andrew@gmail.com",
+      "password": "1234",
+      "bio": "hufdhuhuiwhfgbuyiwf"
+    },
+    {
+      "id": "1a4e05a6-318f-459f-a898-f98084307010",
+      "fName": "Jagmeet",
+      "lName": "Patrawala",
+      "email": "jk@urbuff.com",
+      "username": "hihi",
+      "password": "meowww",
+      "bio": "MEOWWW"
+    },
+    {
+      "id": "07b5f41e-782d-4cd4-bb7e-9230248cd7d7",
+      "fName": "jojo",
+      "lName": "joseph",
+      "email": "eren@gmail.com",
+      "username": "jaegar",
+      "password": "meow",
+      "bio": "HAHA"
+    },
+    {
+      "id": "6f98ba02-a996-4222-b50e-617bc9cc8540",
+      "fName": "html",
+      "lName": "css",
+      "email": "css.gmail.com",
+      "username": "jsjs",
+      "password": "hihi",
+      "bio": "HEYYY"
+    }
+  ]
+}

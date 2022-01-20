@@ -1,0 +1,16 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "fname": "roy"
+    },
+    {
+      "id": 2,
+      "fname": "sam"
+    },
+    {
+      "id": "4d3f32ef-f2c7-44c0-90a4-9348ff4f5045",
+      "fName": "hi"
+    }
+  ]
+}
