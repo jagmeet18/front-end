@@ -58,10 +58,10 @@ const Login = () => {
             }
         }
 
-        if(loggedIN === false) {
-            setDenied(true);
-            console.log(denied);
-        }
+        // if(loggedIN === false) {
+        //     setDenied(true);
+        //     console.log(denied);
+        // }
     }
 // to do
 // sign up - make sure password is fllowing a cirtain pattern

@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import FirebaseContext from './firebase';
 import axios from "axios";
 import {v4 as uuidv4} from 'uuid';
 
@@ -11,8 +13,18 @@ const SignUp = () => {
     const [password, setPassword] = useState('');
     const [bio, setBio] = useState('');
 
-    const[user, setUser] = useState()
+    const[user, setUser] = useState({
+        id: "",
+        fName: "",
+        lName: "",
+        email: "",
+        username: "",
+        password: "",
+        bio: ""
+    })
+    // const [loggedIN, setloggedIN] = useState();
     const [PasswordDiff, setPasswordDiff] = useState();
+    const history = useHistory();
 
     function postUser(fName,lName,email,username,password,bio){
         axios
@@ -31,6 +43,8 @@ const SignUp = () => {
     }
 
     useEffect(() => {
+        // setloggedIN(true);
+        // history.push(`/profile/${user.username}`)
         console.log(user);
     },[user]);
 
@@ -39,8 +53,10 @@ const SignUp = () => {
         if(confirm === password) {
             postUser(fName, lName, email, username, password, bio);
             setPasswordDiff(false);
+            // setloggedIN(true)
         } else {
             setPasswordDiff(true);
+            // setloggedIN(false)
         }
     }
 
@@ -49,6 +65,7 @@ const SignUp = () => {
             <div className="form">
             <div className="header">Create an account</div>
             {PasswordDiff ? <div className="errorHandle">Password is not the same try again</div> : null}
+            {/* {loggedIN ? <div className="errorHandle">Password is not the same try again</div> : null} */}
                 <div className="form_group">
                     <label htmlFor="First Name">Name</label>
                     <input type="text" name="firstname" placeholder="First Name" value={fName} onChange={(e) => setFName(e.target.value)} className="name_textBox"></input>

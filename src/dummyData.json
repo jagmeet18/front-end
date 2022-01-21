@@ -42,6 +42,24 @@
       "username": "jsjs",
       "password": "hihi",
       "bio": "HEYYY"
+    },
+    {
+      "id": "2b23ecd9-d3a3-4477-a1be-626d9ed191b4",
+      "fName": "farhan",
+      "lName": "jdnckj",
+      "email": "njnjn",
+      "username": "apples",
+      "password": "meow",
+      "bio": "HHH"
+    },
+    {
+      "id": "312cd791-a4f2-4db8-a483-a5b0ce0a6ff2",
+      "fName": "jolly",
+      "lName": "rancher",
+      "email": "jk@thisisajoke.com",
+      "username": "haha",
+      "password": "haha",
+      "bio": "hhhhh"
     }
   ]
 }
