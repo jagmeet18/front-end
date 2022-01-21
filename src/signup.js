@@ -64,7 +64,7 @@ const SignUp = () => {
         <div className="container">
             <div className="form">
             <div className="header">Create an account</div>
-            {PasswordDiff ? <div className="errorHandle">Password is not the same try again</div> : null}
+            {PasswordDiff && <div className="errorHandle">Password is not the same try again</div> }
             {/* {loggedIN ? <div className="errorHandle">Password is not the same try again</div> : null} */}
                 <div className="form_group">
                     <label htmlFor="First Name">Name</label>
