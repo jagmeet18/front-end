@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import axios from 'axios'
 
 const Login = () => {
@@ -11,6 +12,7 @@ const Login = () => {
 
     const [loggedIN, setloggedIN] = useState();
     const [denied, setDenied] = useState();
+    const history = useHistory();
     const handleInfo = (event) =>{
         const name = event.target.name;
         const value = event.target.value;
@@ -68,7 +70,7 @@ const Login = () => {
         <div className="container" >
             <div className="form">
             <div className="header">Login</div>
-               {loggedIN ? <div className="sub">tag to home page in actual application</div> : null} {/* instead of the div we gonna link profile page so add <profile></profile> */}
+               {loggedIN ? history.push(`/profile/${info.username}`) : null} {/* instead of the div we gonna link profile page so add <profile></profile> */}
                {/* {loggedIN ? <div className="errorHandle">loggged in</div> : null}*/}
                {denied ? <div className="errorHandle">denied</div> : null} 
                
