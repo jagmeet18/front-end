@@ -4,11 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import FirebaseContext from './firebase';
-import {firebase, FieldValue} from './firebase';
+import {db as firebase} from './firebase';
 
 ReactDOM.render(
   <React.StrictMode>
-    <FirebaseContext.Provider value= {{firebase, FieldValue}}>
+    <FirebaseContext.Provider value= {firebase}>
       <App />
     </FirebaseContext.Provider>
   </React.StrictMode>,

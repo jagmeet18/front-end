@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import FirebaseContext from './firebase';
 import axios from "axios";
@@ -11,6 +11,7 @@ const SignUp = () => {
     const [username, setUsername] = useState('');
     const [confirm, setConfirmPassword] = useState('');
     const [password, setPassword] = useState('');
+    const [pfp, setPfp] = useState('');
     const [bio, setBio] = useState('');
 
     const[user, setUser] = useState({
@@ -25,23 +26,51 @@ const SignUp = () => {
     // const [loggedIN, setloggedIN] = useState();
     const [PasswordDiff, setPasswordDiff] = useState();
     const history = useHistory();
-    const[pfp, setPfp] = useState('');
+    const { firebase } = useContext(FirebaseContext);
 
-    function postUser(fName,lName,email,username,password,pfp,bio){
-        axios
-        .post('http://localhost:3000/profiles', {
-            id: uuidv4(),
-            fName: fName,
-            lName: lName,
-            email: email,
-            username: username,
-            password: password,
-            pfp: pfp,
-            bio: bio
-        })
-        .then((res) => {
-          setUser(res.data);
-        });
+    async function postUser(fName,lName,email,username,password,pfp,bio){
+        // firebase user collection (create a document)
+        // try{
+        //     await firebase
+        //         .collection('users')
+        //         .add({
+        //             id: uuidv4(),
+        //             fName: fName,
+        //             lName: lName,
+        //             email: email,
+        //             username: username,
+        //             password: password,
+        //             pfp: pfp,
+        //             bio: bio
+        //         });
+        //         setUser(
+        //             {"id": uuidv4(),
+        //             "fName": fName,
+        //             "lName": lName,
+        //             "email": email,
+        //             "username": username,
+        //             "password": password,
+        //             "pfp": pfp,
+        //             "bio": bio}
+        //         );
+        //         history.push(`/profile/${user.username}`)  
+        // } catch {
+        //     setUser('');
+        // }
+        // axios
+        // .post('http://localhost:3000/profiles', {
+        //     id: uuidv4(),
+        //     fName: fName,
+        //     lName: lName,
+        //     email: email,
+        //     username: username,
+        //     password: password,
+        //     pfp: pfp,
+        //     bio: bio
+        // })
+        // .then((res) => {
+        //   setUser(res.data);
+        // });
     }
 
     useEffect(() => {
