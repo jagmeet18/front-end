@@ -10,11 +10,11 @@ const SignUp = () => {
     const [confirm, setConfirmPassword] = useState('');
     const [password, setPassword] = useState('');
     const [bio, setBio] = useState('');
-
     const[user, setUser] = useState()
     const [PasswordDiff, setPasswordDiff] = useState();
+    const[pfp, setPfp] = useState('');
 
-    function postUser(fName,lName,email,username,password,bio){
+    function postUser(fName,lName,email,username,password,pfp,bio){
         axios
         .post('http://localhost:3000/profiles', {
             id: uuidv4(),
@@ -23,6 +23,7 @@ const SignUp = () => {
             email: email,
             username: username,
             password: password,
+            pfp: pfp,
             bio: bio
         })
         .then((res) => {
@@ -34,10 +35,25 @@ const SignUp = () => {
         console.log(user);
     },[user]);
 
+    
+
+    const UploadPic = (e) => {
+        console.log('button to upload clicked')
+        const reader = new FileReader(); 
+        console.log(reader)
+        reader.onload = () => {
+            if(reader.readyState === 2){
+                setPfp(reader.result);
+                //console.log(reader.result)
+            }
+        }
+        reader.readAsDataURL(e.target.files[0]);
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         if(confirm === password) {
-            postUser(fName, lName, email, username, password, bio);
+            postUser(fName, lName, email, username, password,pfp, bio);
             setPasswordDiff(false);
         } else {
             setPasswordDiff(true);
@@ -77,8 +93,10 @@ const SignUp = () => {
                 </div>
                 <div className="form_group">
                 <div className="pfp">
-                    <h3>Add Profile Picture</h3>
-
+                    <p>
+                        Add profile picture
+                    </p>
+                    <input type="file" accept="image/*" name="image-upload" id="input" onChange={UploadPic}></input>
                     {/* need to add the functionallity for uploading poic ture will do later after finishing the resty of the work */}
 
                 </div>
