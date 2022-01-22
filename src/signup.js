@@ -1,8 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import FirebaseContext from './firebase';
-import axios from "axios";
+// import FirebaseContext from './firebasec';
+import db from "./firebase";
+import { collection, addDoc, getDocs } from "firebase/firestore"; 
 import {v4 as uuidv4} from 'uuid';
+
 
 const SignUp = () => {
     const [fName, setFName] = useState('');
@@ -23,58 +25,43 @@ const SignUp = () => {
         password: "",
         bio: ""
     })
-    // const [loggedIN, setloggedIN] = useState();
+
     const [PasswordDiff, setPasswordDiff] = useState();
     const history = useHistory();
-    const { firebase } = useContext(FirebaseContext);
+    // const { firebase } = useContext(FirebaseContext);
 
     async function postUser(fName,lName,email,username,password,pfp,bio){
         // firebase user collection (create a document)
-        // try{
-        //     await firebase
-        //         .collection('users')
-        //         .add({
-        //             id: uuidv4(),
-        //             fName: fName,
-        //             lName: lName,
-        //             email: email,
-        //             username: username,
-        //             password: password,
-        //             pfp: pfp,
-        //             bio: bio
-        //         });
-        //         setUser(
-        //             {"id": uuidv4(),
-        //             "fName": fName,
-        //             "lName": lName,
-        //             "email": email,
-        //             "username": username,
-        //             "password": password,
-        //             "pfp": pfp,
-        //             "bio": bio}
-        //         );
-        //         history.push(`/profile/${user.username}`)  
-        // } catch {
-        //     setUser('');
-        // }
-        // axios
-        // .post('http://localhost:3000/profiles', {
-        //     id: uuidv4(),
-        //     fName: fName,
-        //     lName: lName,
-        //     email: email,
-        //     username: username,
-        //     password: password,
-        //     pfp: pfp,
-        //     bio: bio
-        // })
-        // .then((res) => {
-        //   setUser(res.data);
-        // });
+        try{
+            const docRef = await addDoc(collection(db, "users"), {
+                id: uuidv4(),
+                fName: fName,
+                lName: lName,
+                email: email,
+                username: username,
+                password: password,
+                pfp: pfp,
+                bio: bio
+              });
+            console.log("Document written with ID: ", docRef.id);
+            setUser(
+                {"id": uuidv4(),
+                "fName": fName,
+                "lName": lName,
+                "email": email,
+                "username": username,
+                "password": password,
+                "pfp": pfp,
+                "bio": bio}
+            );
+            history.push(`/profile/${username}`)  
+        } catch(e) {
+            console.log("DIDNT WORK", e);
+            setUser('');
+        }
     }
 
     useEffect(() => {
-        // setloggedIN(true);
         // history.push(`/profile/${user.username}`)
         console.log(user);
     },[user]);
@@ -99,10 +86,8 @@ const SignUp = () => {
         if(confirm === password) {
             postUser(fName, lName, email, username, password,pfp, bio);
             setPasswordDiff(false);
-            // setloggedIN(true)
         } else {
             setPasswordDiff(true);
-            // setloggedIN(false)
         }
     }
 
@@ -111,7 +96,6 @@ const SignUp = () => {
             <div className="form">
             <div className="header">Create an account</div>
             {PasswordDiff && <div className="errorHandle">Password is not the same try again</div> }
-            {/* {loggedIN ? <div className="errorHandle">Password is not the same try again</div> : null} */}
                 <div className="form_group">
                     <label htmlFor="First Name">Name</label>
                     <input type="text" name="firstname" placeholder="First Name" value={fName} onChange={(e) => setFName(e.target.value)} className="name_textBox"></input>
