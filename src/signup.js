@@ -97,8 +97,8 @@ const SignUp = () => {
     return ( 
         <div className="container">
             <div className="form">
-            <div className="header">Create an account</div>
-            {PasswordDiff && <div className="errorHandle">Password is not the same try again</div> }
+                <div className="header">Create an account</div>
+                {PasswordDiff && <div className="errorHandle">Password is not the same try again</div> }
                 <div className="form_group">
                     <label htmlFor="First Name">Name</label>
                     <input type="text" name="firstname" placeholder="First Name" value={fName} onChange={(e) => setFName(e.target.value)} className="name_textBox"></input>
@@ -141,9 +141,13 @@ const SignUp = () => {
                     <input type="text" name="bio" placeholder="Bio..." value={bio} onChange={(e) => setBio(e.target.value)}></input>
                 </div>
                 <div className="footer">
-            <button type="button" onClick={handleSubmit} className="b1">LOGIN</button>
-        </div>
+                    <button type="button" onClick={handleSubmit} className="b1">LOGIN</button>
+                </div>
             </div>
+            <p className="text-sm">
+                Have an account?{` `}
+                <Link to= "/login">Login</Link>
+            </p>
         </div>
      );
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import db from "./firebase";
 import { collection, getDocs } from "firebase/firestore"; 
 
@@ -66,7 +66,7 @@ const Login = () => {
     return ( 
         <div className="container" >
             <div className="form">
-            <div className="header">Login</div>
+                <div className="header">Login</div>
                {loggedIN ? history.push(`/profile/${info.username}`) : null} {/* instead of the div we gonna link profile page so add <profile></profile> */}
                {denied ? <div className="errorHandle">denied</div> : null} 
                
@@ -79,9 +79,13 @@ const Login = () => {
                     <input onChange={handleInfo} value={info.password} type="password" name="password" placeholder="Password"></input>
                 </div>
                 <div className="footer">
-            <button onClick={handleSubmit} type="button" className="b1">Login</button>
+                    <button onClick={handleSubmit} type="button" className="b1">Login</button>
+                </div>
             </div>
-            </div>
+            <p className="text-sm">
+                New Here?{` `}
+                <Link to= "/signup">Register</Link>
+            </p>
         </div>
      );
 }
