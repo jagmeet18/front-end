@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import db from "./firebase";
-import { collection, getDocs } from "firebase/firestore"; 
+import { collection, getDocs, query, where } from "firebase/firestore"; 
 
 const Login = () => {
     const [user, setUser] = useState();
@@ -20,15 +20,15 @@ const Login = () => {
         setInfo({...info, [name] : value})
     }
 
-    async function getUser(){
+    async function getUsers(){
         try {
-            const dd = []
+            const allUsers = []
             const querySnapshot = await getDocs(collection(db, "users"));
             querySnapshot.forEach((doc) => {
                 console.log(`${doc.id} =>`,doc.data().username)
-                dd.push(doc.data())
+                allUsers.push(doc.data())
             });
-            setUser(dd);
+            setUser(allUsers);
         } catch(e) {
             console.log("DIDNT WORK", e);
             setUser('');
@@ -37,14 +37,14 @@ const Login = () => {
 
     const handleSubmit = (event) =>{
         event.preventDefault();
-        getUser();
+        getUsers();
     }
 
     useEffect(() => {
         {user && traverseData()}
     }, [user]);
 
-    function traverseData() {
+    async function traverseData() {
         var i
         for(i = 0; i<user.length; i++) {
             if(user[i].username === info.username) {
@@ -52,7 +52,7 @@ const Login = () => {
                     console.log('HI', user[i].username);
                     setloggedIN(true);
                     setDenied(false);
-                    break;
+                    storeData();
                 }
                 else{
                     setDenied(true)
@@ -61,6 +61,16 @@ const Login = () => {
                 setDenied(true)
             }
         }
+    }
+
+    async function storeData() {
+        const q = query(collection(db, "users"), where("username", "==", info.username));
+        const querySnapshot = await getDocs(q)
+        querySnapshot.forEach((doc) => {
+            localStorage.setItem('user', JSON.stringify(doc.data()));
+            var loggingUser = JSON.parse(localStorage.getItem('user'));
+            console.log(loggingUser)
+        });
     }
 
     return ( 

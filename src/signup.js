@@ -56,6 +56,9 @@ const SignUp = () => {
                 "bio": bio}
             )
             setSignedUp(true);
+            localStorage.setItem('user', JSON.stringify(user));
+            var loggingUser = JSON.parse(localStorage.getItem('user'));
+            console.log(loggingUser)
             history.push(`/profile/${username}`)  //can't push from here
         } catch(e) {
             console.log("DIDNT WORK", e);
