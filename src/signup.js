@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 // import FirebaseContext from './firebasec';
 import db from "./firebase";
 import { collection, addDoc, getDocs } from "firebase/firestore"; 
@@ -27,6 +27,7 @@ const SignUp = () => {
     })
 
     const [PasswordDiff, setPasswordDiff] = useState();
+    const [signedUP, setSignedUp] = useState();
     const history = useHistory();
     // const { firebase } = useContext(FirebaseContext);
 
@@ -42,7 +43,7 @@ const SignUp = () => {
                 password: password,
                 pfp: pfp,
                 bio: bio
-              });
+            })
             console.log("Document written with ID: ", docRef.id);
             setUser(
                 {"id": uuidv4(),
@@ -53,11 +54,13 @@ const SignUp = () => {
                 "password": password,
                 "pfp": pfp,
                 "bio": bio}
-            );
-            history.push(`/profile/${username}`)  
+            )
+            setSignedUp(true);
+            history.push(`/profile/${username}`)  //can't push from here
         } catch(e) {
             console.log("DIDNT WORK", e);
             setUser('');
+            setSignedUp(false);
         }
     }
 
