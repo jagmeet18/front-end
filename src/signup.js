@@ -69,7 +69,6 @@ const SignUp = () => {
 
     useEffect(() => {
         // history.push(`/profile/${user.username}`)
-        console.log(user);
     },[user]);
 
     

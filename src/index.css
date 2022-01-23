@@ -153,4 +153,49 @@ input{
   color: crimson; */
   color: black;
 }
+.errormsg{
+  color: red;
+}
+.container2{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.box{
+  /* padding: 20px; */
+  align-items: center;
+  height: 200px;
+  width: 500px;
+  margin-top: 100px;
+  box-shadow: 0px 5px 4px 6px rgba(255, 0, 0, 0.116);
+  text-align: center;
+}
+.smallBox{
+  text-align: center;
+  border: red solid 2px;
+  color: black;
+  height: 130px;
+  background-color: red;
+  display: flex;
+  align-items: center;
+}
+.back{
+  float: right;
+  height: 130px;
+  background-color: red;
+  border: red solid 2px;
+}
+
+.smallBox2{
+  align-items: center;
+}
+.error{
+  margin-left: 50px;
+}
+.cancel{
+  background-color: red;
+  text-align: right;
+}
+
 
