@@ -36,14 +36,23 @@ code {
 .header{
   display: flex;
   flex-direction: column;
-  margin: 10;
+  /* margin: 10; */
 }
 
 .form{
   margin-top: 2em;
   display: flex;
+  padding: 50px;
   flex-direction: column;
   align-items: center;
+  /* background-color: aqua; */
+  /* border: #333 solid 2px; */
+  box-shadow: 0px 5px 4px 6px rgba(42, 42, 42, 0.116);
+  /* position: absolute;
+  border: black solid 2px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
 }
 
 .form_group{
@@ -66,42 +75,82 @@ input{
 }
 input{
   outline: none;
-  box-shadow: 0px 5px 4px 0.2px blueviolet;
+  box-shadow: 0px 2.5px 4px 0.2px crimson;
 }
 .footer{
-  margin-top: 3em;
+  /* margin-top: 1em; */
+  margin-bottom: 1em;
+  /* font-size: large; */
 }
 .b1{
   padding: 5px;
-  border-radius: 8px;
-  background-color: deeppink;
-  border: 2px solid white;
-  color: white;
+  border-radius: 4px;
+  font-size: 20px;
+  background-color: white;
+  border: 2px solid crimson;
+  color: crimson;
   transition: all 250ms ease-in-out;
+  /* margin-right: 60px; */
 }
 .b1:hover{
-  background-color: blueviolet;
+  background-color: crimson;
+  color: white;
 
 }
 .pfp{
-  color: white;
-  background-color: deeppink;
-  border-radius: 8px;
-  padding: 5px;
-  text-align: center;
-  margin-bottom: 1.5em;
-  transition: all 250ms ease-in-out;
+  color: black;
 }
-.pfp:hover{
-  background-color: blueviolet;
+.errorHandle{
+  color: red;
 }
 .navbar{
-  padding: 20px;
-  border-bottom:2px solid grey;
-  margin-top: 10px;
-  /* margin-bottom: 10px;; */
+  background-color: crimson;
+  overflow: hidden;
 }
 .main{
+  color: white;
+  /* background-color: deeppink; */
+  float: right;
+  text-align: center;
+  /* margin-bottom: 30px; */
+  padding: 14px 16px;
   text-decoration: none;
+  font-size: 40px;
+}
+.links{
+  text-decoration: none;
+  color: black;
+  font-size: large;
+  margin-right: 80px; 
+  /* float: right;
+  text-align: center; */
+}
+.links2{
+  text-decoration: none;
+  color: black;
+  float: left;
+  margin-top: 10px;
+  margin-right: 176px;
+  font-size: large;
+}
+.msg{
+  float: left;
+  font-size: medium;
+}
+.links2:hover{
+  color: crimson;
+}
+.links:hover{
+  color:crimson;
+}
+/* .transfer{
+  overflow: hidden;
+  float: right;
+} */
+.main:hover{
+  /* border: crimson solid 1px;
+  background-color: white;
+  color: crimson; */
+  color: black;
 }
 

@@ -65,6 +65,8 @@ const Login = () => {
 
     return ( 
         <div className="container" >
+            <Link to="/vs" className="links">vs form</Link>
+            <Link to="/popup" className="links">pop up</Link>
             <div className="form">
                 <div className="header">Login</div>
                {loggedIN ? history.push(`/profile/${info.username}`) : null} {/* instead of the div we gonna link profile page so add <profile></profile> */}
@@ -79,13 +81,10 @@ const Login = () => {
                     <input onChange={handleInfo} value={info.password} type="password" name="password" placeholder="Password"></input>
                 </div>
                 <div className="footer">
+                    <Link to="/signup" className="links">Create an account?</Link>
                     <button onClick={handleSubmit} type="button" className="b1">Login</button>
                 </div>
             </div>
-            <p className="text-sm">
-                New Here?{` `}
-                <Link to= "/signup">Register</Link>
-            </p>
         </div>
      );
 }
