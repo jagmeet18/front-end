@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import axios from 'axios'
+import db from "./firebase";
+import { collection, getDocs } from "firebase/firestore"; 
 
 const Login = () => {
     const [user, setUser] = useState();
@@ -19,19 +20,24 @@ const Login = () => {
         setInfo({...info, [name] : value})
     }
 
-    function getUser(){
-        axios
-        .get('http://localhost:3000/profiles')
-        .then((res) => {
-            setUser(res.data);
+    async function getUser(){
+        try {
+            const dd = []
+            const querySnapshot = await getDocs(collection(db, "users"));
+            querySnapshot.forEach((doc) => {
+                console.log(`${doc.id} =>`,doc.data().username)
+                dd.push(doc.data())
+            });
+            setUser(dd);
+        } catch(e) {
+            console.log("DIDNT WORK", e);
+            setUser('');
         }
-        );
     }
 
     const handleSubmit = (event) =>{
         event.preventDefault();
         getUser();
-        
     }
 
     useEffect(() => {
@@ -46,8 +52,6 @@ const Login = () => {
                     console.log('HI', user[i].username);
                     setloggedIN(true);
                     setDenied(false);
-                    // console.log(loggedIN)
-                    // console.log(denied)
                     break;
                 }
                 else{
@@ -57,21 +61,13 @@ const Login = () => {
                 setDenied(true)
             }
         }
-
-        // if(loggedIN === false) {
-        //     setDenied(true);
-        //     console.log(denied);
-        // }
     }
-// to do
-// sign up - make sure password is fllowing a cirtain pattern
-// if confirm is not equal show page
+
     return ( 
         <div className="container" >
             <div className="form">
             <div className="header">Login</div>
                {loggedIN ? history.push(`/profile/${info.username}`) : null} {/* instead of the div we gonna link profile page so add <profile></profile> */}
-               {/* {loggedIN ? <div className="errorHandle">loggged in</div> : null}*/}
                {denied ? <div className="errorHandle">denied</div> : null} 
                
                 <div className="form_group">
